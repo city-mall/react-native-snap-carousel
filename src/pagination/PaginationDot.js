@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { View, Animated, Easing, TouchableOpacity } from 'react-native';
-import ViewPropTypes from 'deprecated-react-native-prop-types';
 import PropTypes from 'prop-types';
 import styles from './Pagination.style';
 
@@ -13,12 +12,24 @@ export default class PaginationDot extends PureComponent {
         activeOpacity: PropTypes.number,
         carouselRef: PropTypes.object,
         color: PropTypes.string,
-        containerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+        containerStyle: PropTypes.oneOfType([
+          PropTypes.object,
+          PropTypes.array,
+          PropTypes.number,
+        ]),
         inactiveColor: PropTypes.string,
-        inactiveStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+        inactiveStyle: PropTypes.oneOfType([
+          PropTypes.object,
+          PropTypes.array,
+          PropTypes.number,
+        ]),
         index: PropTypes.number,
-        style: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
-        tappable: PropTypes.bool
+        style: PropTypes.oneOfType([
+          PropTypes.object,
+          PropTypes.array,
+          PropTypes.number,
+        ]),
+        tappable: PropTypes.bool,
     };
 
     constructor (props) {

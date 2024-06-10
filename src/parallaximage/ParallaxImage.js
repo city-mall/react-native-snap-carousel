@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import { View, Image, Animated, Easing, ActivityIndicator, findNodeHandle } from 'react-native';
-import ViewPropTypes from 'deprecated-react-native-prop-types';
 import PropTypes from 'prop-types';
 import styles from './ParallaxImage.style';
 
@@ -17,19 +16,23 @@ export default class ParallaxImage extends Component {
         sliderHeight: PropTypes.number, // passed from <Carousel />
         sliderWidth: PropTypes.number, // passed from <Carousel />
         vertical: PropTypes.bool, // passed from <Carousel />
-        containerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+        containerStyle: PropTypes.oneOfType([
+          PropTypes.object,
+          PropTypes.array,
+          PropTypes.number,
+        ]),
         dimensions: PropTypes.shape({
-            width: PropTypes.number,
-            height: PropTypes.number
+          width: PropTypes.number,
+          height: PropTypes.number,
         }),
         fadeDuration: PropTypes.number,
         parallaxFactor: PropTypes.number,
         showSpinner: PropTypes.bool,
         spinnerColor: PropTypes.string,
         AnimatedImageComponent: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.object
-        ])
+          PropTypes.func,
+          PropTypes.object,
+        ]),
     };
 
     static defaultProps = {
